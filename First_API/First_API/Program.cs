@@ -3,9 +3,9 @@
 // начальные данные
 List<Person> users = new List<Person>
 {
-    new() { Id = Guid.NewGuid().ToString(), Name = "Tom", Age = 37 },
-    new() { Id = Guid.NewGuid().ToString(), Name = "Bob", Age = 41 },
-    new() { Id = Guid.NewGuid().ToString(), Name = "Sam", Age = 24 }
+    new() { Id = Guid.NewGuid().ToString(), Name = "Tom", Age = 37 , Sity = "Vinnitsa"},
+    new() { Id = Guid.NewGuid().ToString(), Name = "Bob", Age = 41 , Sity = "Vinnitsa"},
+    new() { Id = Guid.NewGuid().ToString(), Name = "Sam", Age = 24 , Sity = "Vinnitsa"}
 };
 
 var builder = WebApplication.CreateBuilder();
@@ -132,6 +132,7 @@ async Task UpdatePerson(HttpResponse response, HttpRequest request)
             {
                 user.Age = userData.Age;
                 user.Name = userData.Name;
+                user.Sity = userData.Sity;
                 await response.WriteAsJsonAsync(user);
             }
             else
@@ -156,4 +157,5 @@ public class Person
     public string Id { get; set; } = "";
     public string Name { get; set; } = "";
     public int Age { get; set; }
+    public string Sity { get; set; } = "";
 }
